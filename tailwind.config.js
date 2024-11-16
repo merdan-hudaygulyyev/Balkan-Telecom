@@ -3,11 +3,12 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode:"class",
   theme: {
     extend: {
       gridTemplateColumns: {
-        'auto': 'repeat(3, minmax(0, 400px))'
-      },
+        'auto': 'repeat(minmax(200px, 1fr))'
+    },
       screens: {
         'mobile': '576px',
         // => @media (min-width: 640px) { ... }
@@ -26,6 +27,8 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
 

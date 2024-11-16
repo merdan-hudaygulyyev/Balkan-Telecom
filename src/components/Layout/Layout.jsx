@@ -6,13 +6,9 @@ import Topnavbar from "../Topnavbar/Topnavbar";
 const Layout = (props) => {
   const { children } = props;
   return (
-    <div className="box-border min-h-screen overflow-y-scroll overflow-hidden 
-         [&::-webkit-scrollbar]:w-2 
-       [&::-webkit-scrollbar-track]:bg-slate-900
-       [&::-webkit-scrollbar-thumb]:bg-[#2c58c0]
-         [&::-webkit-scrollbar-thumb]:rounded-full bg-slate-900">
+    <div className="box-border overflow-x-hidden bg-[#C6E7FF]  dark:bg-slate-900 overflow-y-auto">
       <Sidebar />
-      <div className="ml-[300px] h-screen w-full">
+      <div className="ml-[300px] min-h-screen w-[calc(100%-300px)] overflow-y-auto">
         <Topnavbar />
         {children}
       </div>

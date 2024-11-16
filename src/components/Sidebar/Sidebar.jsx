@@ -8,11 +8,11 @@ const Sidebar = () => {
   );
 
   return (
-    <div className="h-screen bg-slate-900 fixed top-0 left-0 min-w-[300px] font-[sans-serif] overflow-hidden ">
+    <div className="h-screen bg-blue-600 dark:bg-slate-900 fixed top-0 left-0 min-w-[300px] font-[sans-serif] overflow-hidden ">
       <div className="relative flex flex-col h-full">
         <a href="/">
           <h1 className="text-2xl p-5 pb-9 font-mono font-extrabold text-white ">
-            <span className="text-blue-500 underline-anime">Balkan Telecom</span>
+            <span className="text-white dark:text-blue-600 underline-anime">Balkan Telecom</span>
           </h1>
         </a>
         <ul className="space-y-5 flex-1">

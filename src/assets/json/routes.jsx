@@ -8,8 +8,9 @@ export const routes = [
         name: "Enjamlar"
     }, 
     {
-        pathname: "/manage", 
+        pathname: "/dashboard", 
         icon: <StatisticsIcon />,
         name: "Dolandyryş"
     }, 
+    
 ]

@@ -3,11 +3,29 @@
 @tailwind utilities;
 
 @layer components {
-    .underline-anime {
-        @apply relative
-    }
-    .underline-anime::after {
-        @apply absolute content-[''] w-full h-[3px] left-0 bottom-[-4px] bg-blue-500 scale-x-0 hover:scale-x-100 transition-transform duration-300 rounded-2xl
-        origin-bottom-right hover:origin-bottom-left
-    }
+  .underline-anime {
+    @apply relative;
+  }
+  .underline-anime::after {
+    @apply absolute content-[''] w-full h-[3px] left-0 bottom-[-4px] bg-white dark:bg-blue-500 scale-x-0 hover:scale-x-100 transition-transform duration-300 rounded-2xl
+        origin-bottom-right hover:origin-bottom-left;
+  }
+}
+
+/* Add this to your CSS file */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(15 23 42);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2c58c0;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #213e83;
 }
