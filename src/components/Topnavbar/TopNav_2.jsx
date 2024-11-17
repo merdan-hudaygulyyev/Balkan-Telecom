@@ -10,7 +10,6 @@ import { auth } from "../../libs/firebase.config";
 const TopNav_2 = () => {
   const [show, setShow] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
-
   const [user, setUser] = useState(null);
 
   const [darkMode, setDarkMode] = useState(() => {
@@ -72,7 +71,7 @@ const TopNav_2 = () => {
               !show ? "hidden" : "block"
             }`}
           >
-            <div className="border rounded-xl flex items-center p-2">
+            <div className="border rounded-xl flex items-center justify-between p-2">
               <img
                 src="https://randomuser.me/api/portraits/women/50.jpg"
                 className="rounded-full w-12 h-12"
@@ -84,7 +83,7 @@ const TopNav_2 = () => {
                 <IoIosNotifications />
               </button>
             </div>
-            <div className="border rounded-xl flex items-center p-2">
+            <div className="border rounded-xl flex items-center justify-between p-2">
               <img
                 src="https://randomuser.me/api/portraits/women/50.jpg"
                 className="rounded-full w-12 h-12"
@@ -96,7 +95,7 @@ const TopNav_2 = () => {
                 <IoIosNotifications />
               </button>
             </div>
-            <div className="border rounded-xl flex items-center p-2">
+            <div className="border rounded-xl flex items-center justify-between p-2">
               <img
                 src="https://randomuser.me/api/portraits/women/50.jpg"
                 className="rounded-full w-12 h-12"
@@ -108,7 +107,7 @@ const TopNav_2 = () => {
                 <IoIosNotifications />
               </button>
             </div>
-            <div className="border rounded-xl flex items-center p-2">
+            <div className="border rounded-xl flex items-center justify-between p-2">
               <img
                 src="https://randomuser.me/api/portraits/women/50.jpg"
                 className="rounded-full w-12 h-12"

@@ -95,10 +95,10 @@ const ProjectStatistics = () => {
 
   return (
     <div>
-        <div class="w-full bg-white rounded-xl shadow dark:bg-gray-800 p-4 mt-24 md:p-6">
+        <div class="w-[50vw] rounded-xl shadow-md dark:bg-gray-800 p-4 mt-24 md:p-6">
             <div class="flex justify-between">
                 <div>
-                <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Proýekt statistika</h5>
+                <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Telekom statistika</h5>
                 </div>
                 <div
                 class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center">

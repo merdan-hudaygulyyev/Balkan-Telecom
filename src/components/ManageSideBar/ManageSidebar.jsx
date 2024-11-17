@@ -9,7 +9,7 @@ const ManageSidebar = () => {
    )
 
   return (
-    <div className={`h-[300px] rounded-xl m-1 w-72 bg-[#03346E] shadow-md shadow-blue-500 dark:bg-slate-900 fixed top-0 left-0  font-[sans-serif] overflow-hidden`}>
+    <div className={`h-[300px] rounded-xl m-1 w-[19%] bg-[#03346E] hover:shadow-md hover:shadow-blue-500 transition-all duration-300 dark:bg-slate-800 fixed top-0 left-0  font-[sans-serif] overflow-hidden`}>
          <div className='flex items-center mx-4'>
             <a href="/">
                <img src={logo} className='w-8 h-8 hidden md:flex mt-1'/>
