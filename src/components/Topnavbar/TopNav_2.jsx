@@ -44,7 +44,7 @@ const TopNav_2 = () => {
   }, [user]);
 
   return (
-    <div className="h-[75px] flex justify-between p-4 bg-[#03346E]/90 z-50 fixed top-0 dark:bg-slate-900 w-[79.3%] rounded-b-xl">
+    <div className="h-[75px] flex justify-between p-4 bg-[#03346E] z-50 fixed top-0 dark:bg-slate-900 w-[79.2%] ml-0 rounded-b-xl">
       <div className="hidden md:flex">
         <form>
           <div className="relative">

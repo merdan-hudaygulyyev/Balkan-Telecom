@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Login from './pages/Login/Login'
@@ -11,52 +12,66 @@ import Setting from "./pages/adminPages/Setting/Setting";
 
 const router = createBrowserRouter([
   {
+    path: "/register",
+    element: (
+        <Register />
+    ),
+  },
+  {
+    path: "/login",
+    element: (
+        <Login />
+    ),
+  },
+  {
     path: "/",
     element: (
-      <Layout>
-        <Home />
-      </Layout>
+      <ProtectedRoute>
+        <Layout>
+          <Home />
+        </Layout>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/dashboard",
     element: (
-      <Layout_2>
-        <Dashboard/>
-      </Layout_2>
+      <ProtectedRoute>
+        <Layout_2>
+          <Dashboard/>
+        </Layout_2>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/users",
     element: (
-      <Layout_2>
-        <Users/>
-      </Layout_2>
+      <ProtectedRoute>
+        <Layout_2>
+          <Users/>
+        </Layout_2>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/news",
     element: (
-      <Layout_2>
-        <News />
-      </Layout_2>
+      <ProtectedRoute>
+        <Layout_2>
+          <News />
+        </Layout_2>
+      </ProtectedRoute>
     ),
   },
   {
     path: "/setting",
     element: (
-      <Layout_2>
-        <Setting/>
-      </Layout_2>
+      <ProtectedRoute>
+        <Layout_2>
+          <Setting/>
+        </Layout_2>
+      </ProtectedRoute>
     ),
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
   },
 ]);
 

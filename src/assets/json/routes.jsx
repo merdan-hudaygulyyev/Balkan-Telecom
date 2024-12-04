@@ -7,10 +7,10 @@ export const routes = [
         icon: <DashboardIcon />,
         name: "Enjamlar"
     }, 
-    {
-        pathname: "/dashboard", 
-        icon: <StatisticsIcon />,
-        name: "Dolandyryş"
-    }, 
+    // {
+    //     pathname: "/dashboard", 
+    //     icon: <StatisticsIcon />,
+    //     name: "Dolandyryş",
+    // }, 
     
 ]

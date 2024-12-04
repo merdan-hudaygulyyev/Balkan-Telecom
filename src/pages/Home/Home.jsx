@@ -62,7 +62,7 @@ const Home = () => {
         <h1 className="my-2 ml-[30px] text-2xl font-semibold text-[#2c58c0] font-mono mb-14 sm:mt-9">
           Serwerler
         </h1>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-3 gap-6 p-2">
           {
             rows?.map((row, index) => (
               <div key={index} className="group ml-5 relative block [perspective:1000px] rounded-xl pt-[100%] overflow-hidden">
@@ -122,11 +122,19 @@ const Home = () => {
       </div>
       <div className="mt-5 w-[700px]">
         <h1 className="text-2xl font-bold font-mono text-[#2c58c0] mb-5">
-          Üzniksiz
+          Ulanyjylar
         </h1>
-        <p className="text-base text-[#2c58c0] font-mono ml-9 mb-5">
-          Hiç zat tapylmady
-        </p>
+        {
+          rows?.map((row_2, index) => (
+              <div key={index} className="flex">
+                <p className="text-base text-[#2c58c0]  font-mono ml-9 mb-5">
+                    {row_2.name} : {row_2.antennas}
+                </p> <br />
+              </div>
+          ))
+        }
+
+       
       </div>
       {isVisible && (
         <button onClick={handleScrollToTop} style={buttonStyle}>

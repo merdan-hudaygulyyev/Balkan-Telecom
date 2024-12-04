@@ -95,7 +95,7 @@ const ProjectStatistics = () => {
 
   return (
     <div>
-        <div class="w-[50vw] rounded-xl shadow-md dark:bg-gray-800 p-4 mt-24 md:p-6">
+        <div class="w-[50vw] rounded-xl shadow-md bg-white dark:bg-gray-800 p-4 mt-24 md:p-6">
             <div class="flex justify-between">
                 <div>
                 <h5 class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">Telekom statistika</h5>

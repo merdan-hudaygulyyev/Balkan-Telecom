@@ -2,7 +2,7 @@
 const Results = () => {
 
   return (
-      <div className="w-[770px] rounded-xl bg-white dark:bg-gray-800">
+      <div className="w-[770px] h-[500px] rounded-xl bg-white dark:bg-gray-800">
         <div className="p-5">
             <h1 class="mb-8 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-6xl dark:text-white"><span className="text-blue-600 dark:text-blue-500">Dünýädäki 1 CRM</span> bilen ösüşe gaýdyp geliň.</h1>
             <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Bu ýerde “Flowbite” -de tehnologiýa, innowasiýa we maýa uzak möhletleýin gymmaty açyp we ykdysady ösüşe itergi berip biljek bazarlara ünsi jemleýäris.</p>

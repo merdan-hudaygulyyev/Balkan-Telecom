@@ -1,175 +1,187 @@
 import { useEffect, useRef } from 'react'
 
   const ProjectCard = () => {
-    const getChartOptions = () => {
-      return {
-        series: [35.1, 23.5, 2.4, 5.4],
-        colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
-        chart: {
-          height: 320,
-          width: "100%",
-          type: "donut",
+
+    const options = {
+      series: [
+        {
+          name: "Income",
+          color: "#31C48D",
+          data: ["1420", "1620", "1820", "1420", "1650", "2120"],
         },
-        stroke: {
-          colors: ["transparent"],
-          lineCap: "",
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              labels: {
-                show: true,
-                name: {
-                  show: true,
-                  fontFamily: "Inter, sans-serif",
-                  offsetY: 20,
-                },
-                total: {
-                  showAlways: true,
-                  show: true,
-                  label: "Unique visitors",
-                  fontFamily: "Inter, sans-serif",
-                  formatter: function (w) {
-                    const sum = w.globals.seriesTotals.reduce((a, b) => {
-                      return a + b
-                    }, 0)
-                    return '$' + sum + 'k'
-                  },
-                },
-                value: {
-                  show: true,
-                  fontFamily: "Inter, sans-serif",
-                  offsetY: -20,
-                  formatter: function (value) {
-                    return value + "k"
-                  },
-                },
-              },
-              size: "80%",
-            },
-          },
-        },
-        grid: {
-          padding: {
-            top: -2,
-          },
-        },
-        labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
-        dataLabels: {
+        {
+          name: "Expense",
+          data: ["788", "810", "866", "788", "1100", "1200"],
+          color: "#F05252",
+        }
+      ],
+      chart: {
+        sparkline: {
           enabled: false,
         },
-        legend: {
-          position: "bottom",
-          fontFamily: "Inter, sans-serif",
-        },
-        yaxis: {
-          labels: {
-            formatter: function (value) {
-              return value + "k"
-            },
+        type: "bar",
+        width: "100%",
+        height: 100,
+        toolbar: {
+          show: false,
+        }
+      },
+      fill: {
+        opacity: 1,
+      },
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          columnWidth: "100%",
+          borderRadiusApplication: "end",
+          borderRadius: 6,
+          dataLabels: {
+            position: "top",
           },
         },
-        xaxis: {
-          labels: {
-            formatter: function (value) {
-              return value  + "k"
-            },
+      },
+      legend: {
+        show: true,
+        position: "bottom",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        formatter: function (value) {
+          return "$" + value
+        }
+      },
+      xaxis: {
+        labels: {
+          show: true,
+          style: {
+            fontFamily: "Inter, sans-serif",
+            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
           },
-          axisTicks: {
-            show: false,
-          },
-          axisBorder: {
-            show: false,
-          },
+          formatter: function(value) {
+            return "$" + value
+          }
         },
+        categories: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        axisTicks: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+      },
+      yaxis: {
+        labels: {
+          show: true,
+          style: {
+            fontFamily: "Inter, sans-serif",
+            cssClass: 'text-xs font-normal fill-gray-500 dark:fill-gray-400'
+          }
+        }
+      },
+      grid: {
+        show: true,
+        strokeDashArray: 4,
+        padding: {
+          left: 2,
+          right: 2,
+          top: -20
+        },
+      },
+      fill: {
+        opacity: 1,
       }
     }
 
     useEffect(() => {
-
-      if (document.getElementById("donut-chart") && typeof ApexCharts !== 'undefined') {
-        const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
-        chart.render()
-      
-        const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
-      
-        function handleCheckboxChange(event, chart) {
-            const checkbox = event.target;
-            if (checkbox.checked) {
-                switch(checkbox.value) {
-                  case 'desktop':
-                    chart.updateSeries([15.1, 22.5, 4.4, 8.4]);
-                    break;
-                  case 'tablet':
-                    chart.updateSeries([25.1, 26.5, 1.4, 3.4]);
-                    break;
-                  case 'mobile':
-                    chart.updateSeries([45.1, 27.5, 8.4, 2.4]);
-                    break;
-                  default:
-                    chart.updateSeries([55.1, 28.5, 1.4, 5.4]);
-                }
-      
-            } else {
-                chart.updateSeries([35.1, 23.5, 2.4, 5.4]);
-            }
-        }
-      
-        checkboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', (event) => handleCheckboxChange(event, chart));
-        });
+      if(document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
+        const chart = new ApexCharts(document.getElementById("bar-chart"), options);
+        chart.render();
       }
-    })
-   
-
-
-    return (
-      <div className="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
-      <div className="flex justify-between mb-3">
-          <div className="flex justify-center items-center">
-              <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white pe-1">Telekom trafigi</h5>
-             
-              <div data-popover id="chart-info" role="tooltip" className="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
-                  <div className="p-3 space-y-2">
-                      <h3 className="font-semibold text-gray-900 dark:text-white">Activity growth - Incremental</h3>
-                      <p>Report helps navigate cumulative growth of community activities. Ideally, the chart should have a growing trend, as stagnating chart signifies a significant decrease of community activity.</p>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">Calculation</h3>
-                      <p>For each date bucket, the all-time volume of activities is calculated. This means that activities in period n contain all activities up to period n, plus the activities generated by your community in period.</p>
-                      <a href="#" className="flex items-center font-medium text-blue-600 dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:underline">Read more <svg className="w-2 h-2 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                </svg></a>
-                  </div>
-                  <div data-popper-arrow></div>
-              </div>
-            </div>
-          <div>
-           
-            <div id="data-tooltip" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                Download CSV
-                <div className="tooltip-arrow" data-popper-arrow></div>
-            </div>
-          </div>
-      </div>
+    }, [options])
     
-      <div>
-        <div className="flex" id="devices">
-          <div className="flex items-center me-4">
-              <input id="desktop" type="checkbox" value="desktop" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-              <label for="desktop" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Desktop</label>
-          </div>
-          <div className="flex items-center me-4">
-              <input id="tablet" type="checkbox" value="tablet" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-              <label for="tablet" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tablet</label>
-          </div>
-          <div className="flex items-center me-4">
-              <input id="mobile" type="checkbox" value="mobile" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
-              <label for="mobile" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mobile</label>
-          </div>
-        </div>
-      </div>
-
-      <div className="py-6" id="donut-chart"></div>
+   
+    return (
+      <div class="max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+  <div class="flex justify-between border-gray-200 border-b dark:border-gray-700 pb-3">
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Profit</dt>
+      <dd class="leading-none text-3xl font-bold text-gray-900 dark:text-white">$5,405</dd>
+    </dl>
+    <div>
+      <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
+        <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13V1m0 0L1 5m4-4 4 4"/>
+        </svg>
+        Profit rate 23.5%
+      </span>
     </div>
+  </div>
+
+  <div class="grid grid-cols-2 py-3">
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Income</dt>
+      <dd class="leading-none text-xl font-bold text-green-500 dark:text-green-400">$23,635</dd>
+    </dl>
+    <dl>
+      <dt class="text-base font-normal text-gray-500 dark:text-gray-400 pb-1">Expense</dt>
+      <dd class="leading-none text-xl font-bold text-red-600 dark:text-red-500">-$18,230</dd>
+    </dl>
+  </div>
+
+  <div id="bar-chart"></div>
+    <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+      <div class="flex justify-between items-center pt-5">
+        <button
+          id="dropdownDefaultButton"
+          data-dropdown-toggle="lastDaysdropdown"
+          data-dropdown-placement="bottom"
+          class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+          type="button">
+          Last 6 months
+          <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+        </button>
+        <div id="lastDaysdropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Yesterday</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Today</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 7 days</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 30 days</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 90 days</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last 6 months</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Last year</a>
+              </li>
+            </ul>
+        </div>
+        <a
+          href="#"
+          class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500  hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2">
+          Revenue Report
+          <svg class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+</div>
   )
 }
 
